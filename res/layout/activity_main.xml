@@ -30,10 +30,10 @@
         android:gravity="center"
         android:shadowColor="#FF0000"
         android:shadowDx="5.0"
+        android:text="Your Gallery"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Your Gallery" >
+        android:textStyle="bold" >
     </Button>
 
 </RelativeLayout>
