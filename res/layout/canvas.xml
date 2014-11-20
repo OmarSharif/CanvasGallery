@@ -14,6 +14,14 @@
     </ImageView>
 
     <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/blackBtn"
+        android:text="Save" />
+
+    <Button
         android:id="@+id/greenBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,19 +45,19 @@
         android:text="Red" />
 
     <Button
-        android:id="@+id/purpleBtn"
+        android:id="@+id/grayBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/redBtn"
-        android:text="Purple" />
+        android:text="Gray" />
 
     <Button
         android:id="@+id/blackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/purpleBtn"
+        android:layout_toRightOf="@+id/grayBtn"
         android:text="Black" />
 
 </RelativeLayout>
