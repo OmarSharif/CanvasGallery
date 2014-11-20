@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class CanvasFrag extends Fragment implements OnTouchListener {
@@ -29,17 +30,33 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
     Paint paint;
     Context context;
     Bitmap alteredBitmap;
+    private Button greenBtn;
+    private Button blueBtn;
+    private Button redBtn;
+    private Button purpleBtn;
+    private Button blackBtn;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         String picturePath = this.getArguments().getString("image");
-        Uri imageUri = Uri.parse(this.getArguments().getString("imageUri"));
-
+        //Uri imageUri = Uri.parse(this.getArguments().getString("imageUri"));
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.canvas, container, false);
+        greenBtn = (Button) view.findViewById(R.id.greenBtn);
+        blueBtn = (Button) view.findViewById(R.id.blueBtn);
+        redBtn = (Button) view.findViewById(R.id.redBtn);
+        purpleBtn = (Button) view.findViewById(R.id.purpleBtn);
+        blackBtn = (Button) view.findViewById(R.id.blackBtn);
+
+
         imgView = (ImageView) view.findViewById(R.id.imgView);
+        paint = new Paint();
         
+        
+        paint.setColor(Color.GREEN);
         try{
             BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
             bmpFactoryOptions.inJustDecodeBounds = true;
@@ -49,8 +66,6 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
             bmp = BitmapFactory.decodeFile(picturePath, bmpFactoryOptions);
             alteredBitmap = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), bmp.getConfig());
             canvas = new Canvas(alteredBitmap);
-            paint = new Paint();
-            paint.setColor(Color.GREEN);
             Matrix matrix = new Matrix();
             canvas.drawBitmap(bmp, matrix, paint);
             imgView.setImageBitmap(alteredBitmap);

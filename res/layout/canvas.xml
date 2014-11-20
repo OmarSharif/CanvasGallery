@@ -13,9 +13,43 @@
         android:layout_weight="1" >
     </ImageView>
 
-    <TextView
-        android:layout_width="fill_parent"
+    <Button
+        android:id="@+id/greenBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello" />
+        android:layout_alignParentBottom="true"
+        android:text="Green" />
+
+    <Button
+        android:id="@+id/blueBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/greenBtn"
+        android:text="Blue" />
+
+    <Button
+        android:id="@+id/redBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/blueBtn"
+        android:text="Red" />
+
+    <Button
+        android:id="@+id/purpleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/redBtn"
+        android:text="Purple" />
+
+    <Button
+        android:id="@+id/blackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/purpleBtn"
+        android:text="Black" />
 
 </RelativeLayout>
