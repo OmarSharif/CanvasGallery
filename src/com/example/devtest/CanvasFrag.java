@@ -60,6 +60,10 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
     private Button blackBtn;
     
     private Button saveBtn;
+    private Button thinBtn;
+
+    private Button thickBtn;
+
 
 
     @Override
@@ -75,6 +79,8 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
         grayBtn = (Button) view.findViewById(R.id.grayBtn);
         blackBtn = (Button) view.findViewById(R.id.blackBtn);
         saveBtn = (Button) view.findViewById(R.id.saveBtn);
+        thinBtn = (Button) view.findViewById(R.id.thinBtn);
+        thickBtn = (Button) view.findViewById(R.id.thickBtn);
 
 
         imgView = (ImageView) view.findViewById(R.id.imgView);
@@ -82,6 +88,21 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
        // pic = new Picture();
 
         //This will set the paint to green when btn is clicked
+        thickBtn.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View view) {
+                paint.setStrokeWidth(5);
+
+            }
+        });
+        thinBtn.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View view) {
+                paint.setStrokeWidth(1);
+
+            }
+        });
+        
         greenBtn.setOnClickListener(new OnClickListener() {
 
             public void onClick(View view) {

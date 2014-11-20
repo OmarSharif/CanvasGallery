@@ -33,7 +33,8 @@
         android:text="Your Gallery"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold" >
+        android:textStyle="bold"
+        android:background="@drawable/green_button" >
     </Button>
 
 </RelativeLayout>
