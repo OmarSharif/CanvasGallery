@@ -1,7 +1,11 @@
 package com.example.devtest;
 
+import java.io.OutputStream;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +15,7 @@ import android.graphics.Picture;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore.Images.Media;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +26,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class CanvasFrag extends Fragment implements OnTouchListener {
     private ImageView imgView;
@@ -38,8 +44,6 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
     float upy = 0;
 
     Paint paint;
-
-    Context context;
 
     Bitmap alteredBitmap;
     
@@ -62,7 +66,7 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         String picturePath = this.getArguments().getString("image");
-        // Uri imageUri = Uri.parse(this.getArguments().getString("imageUri"));
+         Uri imageUri = Uri.parse(this.getArguments().getString("imageUri"));
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.canvas, container, false);
         greenBtn = (Button) view.findViewById(R.id.greenBtn);
@@ -120,6 +124,29 @@ public class CanvasFrag extends Fragment implements OnTouchListener {
 
             }
         });
+        saveBtn.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View view) {
+                
+                if (alteredBitmap != null) {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(Media.DISPLAY_NAME, "test");
+
+                    Uri imageFileUri = getActivity().getContentResolver().insert(Media.EXTERNAL_CONTENT_URI, contentValues);
+                    try {
+                      OutputStream imageFileOS = getActivity().getContentResolver().openOutputStream(imageFileUri);
+                      alteredBitmap.compress(CompressFormat.JPEG, 90, imageFileOS);
+                      Toast t = Toast.makeText(getActivity(), "This image has been saved to you Gallery!", Toast.LENGTH_SHORT);
+                      t.show();
+
+                    } catch (Exception e) {
+                      Log.v("EXCEPTION", e.getMessage());
+                    }
+
+            }
+            }
+        });
+        
         try {
             BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
             bmpFactoryOptions.inJustDecodeBounds = true;
