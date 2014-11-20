@@ -60,6 +60,7 @@ public class MainFragment extends FragmentActivity {
             CanvasFrag newFragment = new CanvasFrag();
             Bundle args = new Bundle();
             args.putString("image", picturePath);
+            args.putString("imageUri",selectedImage.toString());
             newFragment.setArguments(args);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_one, newFragment);
